@@ -1,0 +1,3203 @@
+{
+	"info": {
+		"_postman_id": "f7552adb-7bff-4bb4-9c77-5ca00c4f2121",
+		"name": "OData in ASP.NET Core",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET service document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET metadata document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/$metadata",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"$metadata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET People",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET People context URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/$metadata#People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"$metadata"
+					],
+					"hash": "People"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VinylRecords",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"VinylRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET People minimal metadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;odata.metadata=minimal"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET People no metadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;odata.metadata=none"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET People full metadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;odata.metadata=full"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET one Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET one VinylRecord",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/VinylRecords(1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"VinylRecords(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET property of non-existing entity",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(20)/Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(20)",
+						"Email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET unexisting property",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(5)/UnexistingProperty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(5)",
+						"UnexistingProperty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET property",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"Email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET null property",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(6)/Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(6)",
+						"Email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET raw property value",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/Email/$value",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"Email",
+						"$value"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VinylRecords for one Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"FirstName\":\"John\",\r\n    \"LastName\":\"Smith\",\r\n    \"Email\": \"john.smith@someprovider.com\",    \r\n    \"Gender\":\"Male\",\r\n    \"DateOfBirth\": \"1980-01-30\",\r\n    \"NumberOfRecordsOnWishList\": 10\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Person and VinylRecords",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \r\n    \"FirstName\":\"Emma\",\r\n    \"LastName\":\"Smith\",\r\n    \"Email\": \"emma.smith@someprovider.com\",    \r\n    \"Gender\":\"Female\",\r\n    \"DateOfBirth\": \"1989-05-16\",\r\n    \"NumberOfRecordsOnWishList\": 10,\r\n    \"VinylRecords\": [ \r\n                        {     \r\n                            \"Title\":\"Grace\",\r\n                    \t    \"Artist\":\"Jeff Buckley\",\r\n                            \"CatalogNumber\":\"ABC/875\",\r\n                            \"PressingDetailId\": 1\r\n                    \t}\r\n                    ]\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Person",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"FirstName\": \"Nick\",\r\n    \"LastName\": \"Missorten\",\r\n    \"DateOfBirth\": \"1983-05-18T00:00:00+02:00\",\r\n    \"Gender\": \"Male\",\r\n    \"NumberOfRecordsOnWishList\": 23,\r\n    \"AmountOfCashToSpend\": 2500\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(3)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Person wrong Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"PersonId\": 999,\r\n    \"FirstName\": \"Nick\",\r\n    \"LastName\": \"Missorten\",\r\n    \"DateOfBirth\": \"1983-05-18T00:00:00+02:00\",\r\n    \"Gender\": \"Male\",\r\n    \"Email\": \"nick@someprovider.com\",\r\n    \"NumberOfRecordsOnWishList\": 23,\r\n    \"AmountOfCashToSpend\": 2500\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(3)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Person",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"FirstName\": \"Nick\",\r\n    \"Email\": \"nick@someprovider.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(3)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Person wrong id",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"PersonId\": 999,\r\n    \"FirstName\": \"Nick\",\r\n    \"Email\": \"nick@someprovider.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(3)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Person",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(3)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$select Email from People",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$select=Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$select Email and FirstName from People",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$select=Email,FirstName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email,FirstName"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$select Email and FirstName from one Person",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)?$select=Email,FirstName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email,FirstName"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$select Title from VinylRecords",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords?$select=Title",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Title"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$expand VinylRecords for People",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$expand=VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$expand PressingDetail for VinylRecords for People",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$expand=VinylRecords($expand=PressingDetail)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords($expand=PressingDetail)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$expand and $select combined",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$select=Email,FirstName&$expand=VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email,FirstName"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$expand and $select combined, and $select query option for $expand",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$select=Email,FirstName&$expand=VinylRecords($select=Title)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email,FirstName"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords($select=Title)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$expand and $select combined as query option, 2 levels deep",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$select=Email,FirstName&$expand=VinylRecords($select=Title;$expand=PressingDetail($select=Grams))",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email,FirstName"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords($select=Title;$expand=PressingDetail($select=Grams))"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$expand and $select on one Person, combined as query option, on two navigation properties",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)?$select=Email,FirstName&$expand=VinylRecords($select=Title)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Email,FirstName"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords($select=Title)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby Email",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$orderby=Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby Email desc",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$orderby=Email desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Email desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby Gender, Email",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$orderby=Gender, Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Gender, Email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby Gender desc, Email",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$orderby=Gender desc, Email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Gender desc, Email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby in $expand",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$orderby=Gender desc, Email desc&$expand=VinylRecords($orderby=Title)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Gender desc, Email desc"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords($orderby=Title)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby and $select in $expand",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$orderby=Gender desc, Email desc&$expand=VinylRecords($select=Title;$orderby=Title)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Gender desc, Email desc"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords($select=Title;$orderby=Title)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby on one Person (should fail)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)?$orderby=Gender desc, Email desc&$expand=VinylRecords($select=Title;$orderby=Title)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "Gender desc, Email desc"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords($select=Title;$orderby=Title)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$orderby on one Person's VinylRecords",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)?$expand=VinylRecords($select=Title;$orderby=Title)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords($select=Title;$orderby=Title)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paging, server-driven, select less",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$top=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paging, server-driven, select more",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$top=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paging, server-driven, including count",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$count=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$count",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paging, server-driven, including count and skip",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$count=true&$skip=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$count",
+							"value": "true"
+						},
+						{
+							"key": "$skip",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paging: $top too large (should fail)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$top=11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paging: $skip too large (should fail)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$top=2&$skip=15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "2"
+						},
+						{
+							"key": "$skip",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter eq",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=FirstName eq 'Kevin'",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "FirstName eq 'Kevin'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter gt",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=PersonId gt 3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "PersonId gt 3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter on DateTimeOffset",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=DateOfBirth le 1981-05-05T00:00:00Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "DateOfBirth le 1981-05-05T00:00:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter on Enum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=Gender eq AirVinyl.Gender'Female'",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Gender eq AirVinyl.Gender'Female'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter eq and lt combined",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=PersonId lt 3 and FirstName eq 'Kevin'",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "PersonId lt 3 and FirstName eq 'Kevin'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter eq or lt combined",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=PersonId lt 3 or FirstName eq 'Kevin'",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "PersonId lt 3 or FirstName eq 'Kevin'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter in $expand query option set",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$expand=VinylRecords($filter=Year ge 2000)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords($filter=Year ge 2000)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter in $expand query option set, null literal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$expand=VinylRecords($filter=Year eq null)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords($filter=Year eq null)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter resource path syntax",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$expand=VinylRecords($filter=PressingDetail/Grams ge 100)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords($filter=PressingDetail/Grams ge 100)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter any lambda expression",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=VinylRecords/any(vr:vr/Artist eq 'Arctic Monkeys')&$expand=VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "VinylRecords/any(vr:vr/Artist eq 'Arctic Monkeys')"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter all lambda expression",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=VinylRecords/all(vr:vr/Artist eq 'Abba')&$expand=VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "VinylRecords/all(vr:vr/Artist eq 'Abba')"
+						},
+						{
+							"key": "$expand",
+							"value": "VinylRecords"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter arithmetic operator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=NumberOfRecordsOnWishList add 10 eq 20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "NumberOfRecordsOnWishList add 10 eq 20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter arithmetic operator, multiple fields",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=AmountOfCashToSpend div NumberOfRecordsOnWishList gt 10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "AmountOfCashToSpend div NumberOfRecordsOnWishList gt 10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter operator precedence: no grouping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=AmountOfCashToSpend add 1500 div 3 gt 600",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "AmountOfCashToSpend add 1500 div 3 gt 600"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter operator precedence: with grouping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=(AmountOfCashToSpend add 1500) div 3 gt 600",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "(AmountOfCashToSpend add 1500) div 3 gt 600"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter endswith canonical function",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=endswith(FirstName, 'n')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "endswith(FirstName, 'n')"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter length canonical function and eq",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=length(Email) eq 26",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "length(Email) eq 26"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter year canonical function and eq",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=year(DateOfBirth) eq 1981",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "year(DateOfBirth) eq 1981"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter combined canonical functions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$filter=length(Email) eq 26 and endswith(FirstName, 'n')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "length(Email) eq 26 and endswith(FirstName, 'n')"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RecordStore Tags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(1)/Tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(1)",
+						"Tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter $it literal on collection of primitives ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(1)/Tags?$filter=startswith($it, 'R')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(1)",
+						"Tags"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "startswith($it, 'R')"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter $it literal refer to collection - will fail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/odata/People?$expand=VinylRecords($filter=year($it/DateOfBirth) lt Year)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "VinylRecords($filter=year($it/DateOfBirth) lt Year)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VinylRecords (should fail)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"VinylRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VinylRecords, contained in Person",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET one VinylRecord, contained in Person",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords(1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST VinylRecord for Person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Title\": \"Bleach\",\r\n  \"Artist\": \"Nirvana\",\r\n  \"CatalogNumber\": \"ARC/101\",\r\n  \"Year\": 1989,\r\n  \"PressingDetailId\": 1\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH VinylRecord for Person",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Artist\": \"Nirvana updated\" \r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords(1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH VinylRecord for Person, invalid Person (should be ignored)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Artist\": \"Nirvana updated\",\r\n    \"Person\": { \"PersonId\" : 5 }\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords(1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE VinylRecord for Person",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords(6)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords(6)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IsHighRated - bound function to entity",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(1)/AirVinyl.Functions.IsHighRated(minimumRating=1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(1)",
+						"AirVinyl.Functions.IsHighRated(minimumRating=1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IsRatedBy - bound function to entity collection, rated by 1 or 2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores/AirVinyl.Functions.AreRatedBy(personIds=[1,2])",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores",
+						"AirVinyl.Functions.AreRatedBy(personIds=[1,2])"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IsRatedBy - bound function to entity collection, rated by 7",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores/AirVinyl.Functions.AreRatedBy(personIds=[7])",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores",
+						"AirVinyl.Functions.AreRatedBy(personIds=[7])"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IsRatedBy - bound function to entity collection, rated by 4 or 5",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores/AirVinyl.Functions.AreRatedBy(personIds=[4,5])",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores",
+						"AirVinyl.Functions.AreRatedBy(personIds=[4,5])"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET GetHighRatedRecordStored - unbound function",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/GetHighRatedRecordStores(minimumRating=3)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"GetHighRatedRecordStores(minimumRating=3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Rate - bound action to entity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"personId\": 4, \"rating\": 5}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(1)/AirVinyl.Actions.Rate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(1)",
+						"AirVinyl.Actions.Rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST RemoveRatings - bound action to entity collection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"personId\": 1}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores/AirVinyl.Actions.RemoveRatings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores",
+						"AirVinyl.Actions.RemoveRatings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST RemoveRecordStoreRatings - unbound action",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"personId\": 2}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RemoveRecordStoreRatings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RemoveRecordStoreRatings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Singleton",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/Tim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Tim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Singleton",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NumberOfRecordsOnWishList\": 30,\r\n    \"AmountOfCashToSpend\": 200\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/Tim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Tim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RecordStores",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RecordStores, filter on SpecializedRecordStore",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores/AirVinyl.SpecializedRecordStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores",
+						"AirVinyl.SpecializedRecordStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RecordStore 2, filter on SpecializedRecordStore",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(2)/AirVinyl.SpecializedRecordStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(2)",
+						"AirVinyl.SpecializedRecordStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RecordStore 1, filter on SpecializedRecordStore (should return NotFound)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(1)/AirVinyl.SpecializedRecordStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(1)",
+						"AirVinyl.SpecializedRecordStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$filter on derived type collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores/AirVinyl.SpecializedRecordStore?$filter=Specialization eq 'Indie'",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores",
+						"AirVinyl.SpecializedRecordStore"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Specialization eq 'Indie'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$select property of derived type",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(2)/AirVinyl.SpecializedRecordStore?$select=Specialization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(2)",
+						"AirVinyl.SpecializedRecordStore"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Specialization"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$select property of derived type (will fail)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(1)?$select=Specialization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(1)"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Specialization"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST RecordStore",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"Name\": \"New Regular Store\"\r\n }"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST SpecializedRecordStore (should fail)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"New Specialized Store\",\r\n    \"Specialization\": \"Pop\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST SpecializedRecordStore",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@odata.type\": \"#AirVinyl.SpecializedRecordStore\",\r\n    \"Name\": \"New Specialized Store\",\r\n    \"Specialization\": \"Pop\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH SpecializedRecordStore",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"@odata.type\": \"#AirVinyl.SpecializedRecordStore\",\r\n  \"Specialization\": \"Metal\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(2)/AirVinyl.SpecializedRecordStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(2)",
+						"AirVinyl.SpecializedRecordStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE SpecializedRecordStore",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/RecordStores(2)/AirVinyl.SpecializedRecordStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"RecordStores(2)",
+						"AirVinyl.SpecializedRecordStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VinylRecord (Nirvana - Nevermind)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords(1)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST VinylRecord with additional properties",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Title\": \"In Utero\",\r\n  \"Artist\": \"Nirvana\",\r\n  \"CatalogNumber\": \"ARG/431\",\r\n  \"PressingDetailId\": 1,\r\n  \"Year\": 1993,\r\n  \"Publisher\": \"Geffen\",\r\n  \"Producer\": \"Steve Albini\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH VinylRecord, update & add properties",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Publisher\": \"Geffen updated\",\r\n    \"Producer\" : \"Butch Vig\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/People(1)/VinylRecords(24)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"People(1)",
+						"VinylRecords(24)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$batch, one GET request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/mixed;boundary=batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http \r\nContent-Transfer-Encoding:binary\r\n\r\nGET http://localhost:5000/odata/People(1)/VinylRecords HTTP/1.1\r\nAccept: application/json\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf--"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/$batch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"$batch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$batch, two GET requests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/mixed;boundary=batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http \r\nContent-Transfer-Encoding:binary\r\n\r\nGET http://localhost:5000/odata/People(1)/VinylRecords HTTP/1.1\r\nAccept: application/json\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http\r\nContent-Transfer-Encoding:binary\r\n\r\nGET http://localhost:5000/odata/People(2)/VinylRecords HTTP/1.1\r\nAccept: application/json\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf--"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/$batch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"$batch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "$batch, POST, PATCH and two GET requests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/mixed;boundary=batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http\r\nContent-Transfer-Encoding:binary\r\n\r\nPOST http://localhost:5000/odata/People(2)/VinylRecords HTTP/1.1\r\nContent-Type: application/json\r\nAccept: application/json\r\n\r\n{\r\n  \"Title\": \"Communion\",\r\n  \"Artist\": \"Years and Years\",\r\n  \"CatalogNumber\": \"IOP/757\",\r\n  \"Year\": 2015,\r\n  \"PressingDetailId\": 1\r\n}\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http\r\nContent-Transfer-Encoding:binary\r\n\r\nPATCH http://localhost:5000/odata/People(1)/VinylRecords(1) HTTP/1.1\r\nContent-Type: application/json\r\nAccept: application/json\r\n\r\n{\r\n  \"Title\": \"Nevermind Updated\"\r\n}\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http\r\nContent-Transfer-Encoding:binary\r\n\r\nGET http://localhost:5000/odata/People(1)/VinylRecords HTTP/1.1\r\nAccept: application/json\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf\r\nContent-Type: application/http\r\nContent-Transfer-Encoding:binary\r\n\r\nGET http://localhost:5000/odata/People(2)/VinylRecords HTTP/1.1\r\nAccept: application/json\r\n\r\n--batch_a8ba333b-34b7-4699-bdfa-af8d46dbbcbf--"
+				},
+				"url": {
+					"raw": "http://localhost:5000/odata/$batch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"$batch"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
