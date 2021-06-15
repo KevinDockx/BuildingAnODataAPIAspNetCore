@@ -15,48 +15,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AirVinyl.API.Controllers
 {
-
-    //public class PeopleController : ODataController
-    //{
-    //    private readonly AirVinylDbContext _airVinylDbContext;
-
-    //    public PeopleController(AirVinylDbContext airVinylDbContext)
-    //    {
-    //        _airVinylDbContext = airVinylDbContext
-    //            ?? throw new ArgumentNullException(nameof(airVinylDbContext));
-    //    }
-
-    //    [HttpGet]
-    //    [ODataRoute("People")]
-    //    public IActionResult Get()
-    //    {
-    //        return Ok(_airVinylDbContext.People);
-    //    }
-
-    //    [HttpGet]
-    //    [ODataRoute("People/({key})")]
-    //    public IActionResult Get(int key)
-    //    {
-    //        var people = _airVinylDbContext.People.Where(p => p.PersonId == key);
-
-    //        if (!people.Any())
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        return Ok(SingleResult.Create(people)); 
-    //    }
-    //}
-
-
-
-        public class PeopleController : ODataController
+    public class PeopleController : ODataController
     {
         private readonly AirVinylDbContext _airVinylDbContext;
 
         public PeopleController(AirVinylDbContext airVinylDbContext)
         {
-            _airVinylDbContext = airVinylDbContext 
+            _airVinylDbContext = airVinylDbContext
                 ?? throw new ArgumentNullException(nameof(airVinylDbContext));
         }
 
@@ -190,7 +155,7 @@ namespace AirVinyl.API.Controllers
             if (person == null)
             {
                 return NotFound();
-            } 
+            }
 
             var propertyToGet = new Uri(HttpContext.Request.GetEncodedUrl()).Segments.Last();
 
@@ -205,16 +170,16 @@ namespace AirVinyl.API.Controllers
             {
                 // null = no content
                 return NoContent();
-            } 
-                
-            return Ok(propertyValue);              
+            }
+
+            return Ok(propertyValue);
         }
 
         [HttpGet]
         [ODataRoute("People({key})/VinylRecords")]
         [EnableQuery]
         public IActionResult GetVinylRecordsForPerson(int key)
-        { 
+        {
             var person = _airVinylDbContext.People.FirstOrDefault(p => p.PersonId == key);
             if (person == null)
             {
@@ -224,7 +189,7 @@ namespace AirVinyl.API.Controllers
             return Ok(_airVinylDbContext.VinylRecords.Include("DynamicVinylRecordProperties")
                 .Where(v => v.Person.PersonId == key));
         }
-         
+
 
         [HttpGet]
         [ODataRoute("People({key})/VinylRecords({vinylRecordKey})")]
@@ -245,7 +210,7 @@ namespace AirVinyl.API.Controllers
             {
                 return NotFound();
             }
-             
+
             return Ok(SingleResult.Create(vinylRecord));
         }
 
@@ -373,6 +338,6 @@ namespace AirVinyl.API.Controllers
 
             // return No Content
             return NoContent();
-        } 
+        }
     }
 }
