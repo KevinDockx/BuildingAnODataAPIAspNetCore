@@ -16,37 +16,37 @@ using Microsoft.EntityFrameworkCore;
 namespace AirVinyl.API.Controllers
 {
 
-    public class PeopleControllerX : ODataController
-    {
-        private readonly AirVinylDbContext _airVinylDbContext;
+    //public class PeopleController : ODataController
+    //{
+    //    private readonly AirVinylDbContext _airVinylDbContext;
 
-        public PeopleControllerX(AirVinylDbContext airVinylDbContext)
-        {
-            _airVinylDbContext = airVinylDbContext
-                ?? throw new ArgumentNullException(nameof(airVinylDbContext));
-        }
+    //    public PeopleController(AirVinylDbContext airVinylDbContext)
+    //    {
+    //        _airVinylDbContext = airVinylDbContext
+    //            ?? throw new ArgumentNullException(nameof(airVinylDbContext));
+    //    }
 
-        [HttpGet]
-        [ODataRoute("People")]
-        public IActionResult Get()
-        {
-            return Ok(_airVinylDbContext.People);
-        }
+    //    [HttpGet]
+    //    [ODataRoute("People")]
+    //    public IActionResult Get()
+    //    {
+    //        return Ok(_airVinylDbContext.People);
+    //    }
 
-        [HttpGet]
-        [ODataRoute("People/({key})")]
-        public IActionResult Get(int key)
-        {
-            var people = _airVinylDbContext.People.Where(p => p.PersonId == key);
+    //    [HttpGet]
+    //    [ODataRoute("People/({key})")]
+    //    public IActionResult Get(int key)
+    //    {
+    //        var people = _airVinylDbContext.People.Where(p => p.PersonId == key);
 
-            if (!people.Any())
-            {
-                return NotFound();
-            }
+    //        if (!people.Any())
+    //        {
+    //            return NotFound();
+    //        }
 
-            return Ok(SingleResult.Create(people)); 
-        }
-    }
+    //        return Ok(SingleResult.Create(people)); 
+    //    }
+    //}
 
 
 
@@ -59,47 +59,6 @@ namespace AirVinyl.API.Controllers
             _airVinylDbContext = airVinylDbContext 
                 ?? throw new ArgumentNullException(nameof(airVinylDbContext));
         }
-
-        //[EnableQuery]
-        // public async Task<IActionResult> Get()
-        // {
-        //     return Ok(await _airVinylDbContext.People.ToListAsync());
-        // }
-
-        //[EnableQuery]
-        //public async IAsyncEnumerable<object> Get(ODataQueryOptions<Person> queryOptions) 
-        //{
-        //    // cfr https://github.com/OData/WebApi/issues/2152
-
-        //   // var people = await _airVinylDbContext.People.ToListAsync();
-
-        //    await foreach (var product in (IAsyncEnumerable<object>)(queryOptions.ApplyTo(_airVinylDbContext.People)))
-        //    {                
-        //        yield return product; 
-        //    } 
-        //}
-
-        ////[EnableQuery]
-        //public async Task<IActionResult> Get(ODataQueryOptions<Person> queryOptions)
-        //{
-        //    // cfr https://github.com/OData/WebApi/issues/2152
-
-        //    // var people = await _airVinylDbContext.People.ToListAsync();
-
-        //    // ValidateQuery(queryOptions);
-
-        //    // https://forums.asp.net/t/1973344.aspx?How+do+I+use+async+Task+IQueryable+ !!!
-
-        //    var myQueryable = (IQueryable<Person>)queryOptions.ApplyTo(_airVinylDbContext.People);
-        //    var test = await myQueryable.ToListAsync();
-        //    return Ok(test); // await myQueryable.ToListAsync());
-
-        //    //var queryableWithOptionsApplied = queryOptions.ApplyTo(_airVinylDbContext.People);
-
-        //    //// execute
-        //    //return Ok(await queryableWithOptionsApplied.ToListAsync());
-        //}
-
 
         [EnableQuery(MaxExpansionDepth = 3, MaxSkip = 10, MaxTop = 5, PageSize = 4)]
         public IActionResult Get()
@@ -119,18 +78,6 @@ namespace AirVinyl.API.Controllers
             }
 
             return Ok(SingleResult.Create(people));
-
-
-
-            //var person = await _airVinylDbContext.People
-            //    .FirstOrDefaultAsync(p => p.PersonId == key);
-
-            //if (person == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return Ok(person);
         }
 
 
@@ -229,53 +176,6 @@ namespace AirVinyl.API.Controllers
         }
 
 
-        [HttpPost]
-        [ODataRoute("People({key})/VinylRecords/$ref")]
-        public IActionResult CreateLinkToVinylRecord(int key, [FromBody] Uri link)
-        {
-            // get the current person, including links to vinyl records as we need to check those
-            var currentPerson = _airVinylDbContext.People.Include("VinylRecords")
-                .FirstOrDefault(p => p.PersonId == key);
-
-            if (currentPerson == null)
-            {
-                return NotFound();
-            }
-
-            // we need the key value from the passed-in link Uri
-            // int keyOfFriendToAdd = Request.GetKeyValue<int>(link);
-
-            var keyOfVinylRecordToAdd = 1; //link.Segments.LastOrDefault(s => s.StartsWith("VinylRecord"));
-
-            if (currentPerson.VinylRecords.Any(item => item.VinylRecordId == keyOfVinylRecordToAdd))
-            {
-                return BadRequest($"Vinyl record {keyOfVinylRecordToAdd} is already linked to the person {key}");
-            }
-
-            // find the record
-            var originalVinylRecord = _airVinylDbContext.VinylRecords.FirstOrDefault(
-                p => p.VinylRecordId == keyOfVinylRecordToAdd);
-
-            if (originalVinylRecord == null)
-            {
-                return NotFound();
-            }
-
-            // create the association.  With our backend database, that means creating a new VinylRecord
-            // for the current person.  Start with a copy of all values
-            var newVinylRecord = new VinylRecord();
-            _airVinylDbContext.Entry(newVinylRecord).CurrentValues.SetValues(originalVinylRecord);
-            newVinylRecord.VinylRecordId = 0; 
-            // set the person id to the correct one
-            newVinylRecord.PersonId = currentPerson.PersonId;
-
-            // add & save the changes
-            _airVinylDbContext.VinylRecords.Add(newVinylRecord);
-            _airVinylDbContext.SaveChanges();
-
-            return NoContent();
-        }
-
         [HttpGet]
         [ODataRoute("People({key})/Email")]
         [ODataRoute("People({key})/FirstName")]
@@ -309,31 +209,6 @@ namespace AirVinyl.API.Controllers
                 
             return Ok(propertyValue);              
         }
-
-        // Voor "friends" collection?
-        //[HttpGet]
-        //[ODataRoute("People({key})/VinylRecords")]
-        //[EnableQuery]
-        //public IActionResult GetPersonCollectionProperty(int key)
-        //{
-        //    var collectionPopertyToGet = new Uri(HttpContext.Request.GetEncodedUrl()).Segments.Last();
-
-        //    var person = _airVinylDbContext.People
-        //        .Include(collectionPopertyToGet)
-        //        .FirstOrDefault(p => p.PersonId == key);
-
-        //    if (person == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (!person.HasProperty(collectionPopertyToGet))
-        //    {
-        //        return NotFound();
-        //    }             
-
-        //    return Ok(person.GetValue(collectionPopertyToGet));
-        //}
 
         [HttpGet]
         [ODataRoute("People({key})/VinylRecords")]
@@ -374,40 +249,6 @@ namespace AirVinyl.API.Controllers
             return Ok(SingleResult.Create(vinylRecord));
         }
 
-
-        //[HttpGet] 
-        //[ODataRoute("People({key})/FirstName/$value")] 
-        //public IActionResult GetPersonPropertyRawValue(int key)
-        //{
-        //    var person = _airVinylDbContext.People
-        //      .FirstOrDefault(p => p.PersonId == key);
-
-        //    if (person == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var url = HttpContext.Request.GetEncodedUrl();
-        //    var propertyToGet = new Uri(url).Segments[^2].TrimEnd('/');
-
-        //    if (!person.HasProperty(propertyToGet))
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var propertyValue = person.GetValue(propertyToGet);
-
-        //    if (propertyValue == null)
-        //    { 
-        //        return NoContent();
-        //    }
-
-        //    return Ok(propertyValue.ToString());
-        //}
-
-
-
-
         [HttpGet]
         [ODataRoute("People({key})/Email/$value")]
         [ODataRoute("People({key})/FirstName/$value")]
@@ -442,7 +283,6 @@ namespace AirVinyl.API.Controllers
 
             return Ok(propertyValue.ToString());
         }
-
 
         [HttpPost]
         [ODataRoute("People({key})/VinylRecords")]
